@@ -1,3 +1,4 @@
+import requests
 from dotenv import load_dotenv
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import (
@@ -9,11 +10,13 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime
 
+
 # Загрузка переменных окружения из .env файла
 load_dotenv()
 
 # Получение токенов и других настроек из переменных окружения
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
+YOOMONEY_CLIENT_ID = os.getenv('YOOMONEY_CLIENT_ID')
 YOOMONEY_LINK = os.getenv('YOOMONEY_LINK')
 CREDS_FILE_PATH = os.getenv('CREDS_FILE')
 SPREADSHEET_ID = os.getenv('SPREADSHEET_ID')
@@ -23,6 +26,7 @@ SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDS_FILE_PATH, SCOPE)
 client = gspread.authorize(credentials)
 sheet = client.open_by_key(SPREADSHEET_ID).sheet1
+
 
 # Состояния для ConversationHandler
 INPUT_DATE = 1
@@ -37,7 +41,7 @@ async def start(update: Update, context: CallbackContext) -> None:
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    await update.message.reply_text('Выберите действие:', reply_markup=reply_markup)
+    await update.message.reply_text('Вас приветствует тестовый телеграм-бот! Выберите действие:', reply_markup=reply_markup)
 
 async def show_image(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
@@ -88,19 +92,17 @@ def input_date_command_handler() -> ConversationHandler:
         fallbacks=[CommandHandler("cancel", input_date_cancel)]
     )
 
+
 def main() -> None:
     application = Application.builder().token(TELEGRAM_TOKEN).build()
 
-    # Регистрируем обработчики команд
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(show_image, pattern='show_image'))
     application.add_handler(CallbackQueryHandler(get_a2_value, pattern='get_a2_value'))
 
-    # Регистрируем обработчик для ввода даты
     conv_handler = input_date_command_handler()
     application.add_handler(conv_handler)
 
-    # Запускаем бота
     application.run_polling()
 
 if __name__ == '__main__':

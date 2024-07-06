@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ee9697d-58f5-4f5e-b1a1-7523478e069b" name="Changes" comment="Настройка 5-й кнопки." />
+    <list default="true" id="2ee9697d-58f5-4f5e-b1a1-7523478e069b" name="Changes" comment="requirements.txt">
+      <change afterPath="$PROJECT_DIR$/account.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quickpay.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +116,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720272738883</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="requirements.txt">
+      <option name="closed" value="true" />
+      <created>1720273011739</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720273011739</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,7 +141,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Создание бота. Настройка 4-х кнопок." />
     <MESSAGE value="Настройка 5-й кнопки." />
-    <option name="LAST_COMMIT_MESSAGE" value="Настройка 5-й кнопки." />
+    <MESSAGE value="requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="requirements.txt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
